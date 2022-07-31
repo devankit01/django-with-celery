@@ -142,7 +142,7 @@ CELERY_BEAT_SCHEDULER = 'django_celery_beat.schedulers:DatabaseScheduler'
 
 # Email Config
 EMAIL_HOST = 'smtp-relay.sendinblue.com'
-EMAIL_HOST_USER = '' 
-EMAIL_HOST_PASSWORD = ''
+EMAIL_HOST_USER = 'ankit.gupta@appventurez.com' 
+EMAIL_HOST_PASSWORD = 'pJtYB2ndGaRgHLcO'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
