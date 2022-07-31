@@ -1,0 +1,35 @@
+version: "3"
+
+services:
+  app:
+    restart: always
+    build:
+      context: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/code
+    command: >
+      sh -c "python3 manage.py makemigrations && python3 manage.py migrate &&
+             python3 manage.py runserver 0.0.0.0:8000"
+             
+  db:
+    image: postgres:10-alpine
+    environment:
+      - POSTGRES_DB='nlgrjmua'
+      - POSTGRES_USER='nlgrjmua'
+      - POSTGRES_PASSWORD='HOyW_TsmgdR-U9Nyx1v4BdUCxTteKu-n'
+  redis:
+    image: redis:alpine
+    
+  celery:
+    restart: always
+    build:
+      context: .
+    command: celery -A CeleryProject.celery  worker -l info
+    volumes:
+      - .:/code
+    depends_on:
+      - db
+      - redis
+      - app
