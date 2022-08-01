@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 from .tasks import test_func
-from SendEmail.tasks import send_email_func, _get_products_list
+from .tasks import send_email_func, _get_products_list
 
 # Create your views here.
 def index(request):
